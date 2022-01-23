@@ -29,13 +29,13 @@ end
 % Hyper-parameters setups
 rho = 1e-3;
 mu = 5e-2 / rho; % mu' = mu / rho
-nu = 1e-3 / rho;  % nu' = nu / rho
+nu = 5e-3 / rho;  % nu' = nu / rho
 
 %% Load data and generate LR-HSI and HR-RGB
 im_structure =load(fullfile(folder, Test_file), 'truth');
-S = double(im_structure.truth); 
+S = double(im_structure.truth) / 255.0; 
 im_structure =load(fullfile(folder_hat, Test_file), 'RE');
-X_hat = double(im_structure.RE); 
+X_hat = double(im_structure.RE)/ 255.0; 
 
 [nr,nc,L] = size(S);
 S_bar=Unfold(S,size(S),3);
